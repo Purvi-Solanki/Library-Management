@@ -1,16 +1,21 @@
 package models;
 
-public class Person {
+public abstract class Person {
     protected String name;
-    protected String contactInfo;
+    protected String id;
 
-    public Person(String name, String contactInfo) {
+    public Person(String name, String id) {
         this.name = name;
-        this.contactInfo = contactInfo;
+        this.id = id;
     }
 
-    public void displayDetails() {
-        System.out.println("Name: " + name);
-        System.out.println("Contact Info: " + contactInfo);
+    public String getName() {
+        return name;
     }
+
+    public String getId() {
+        return id;
+    }
+
+    public abstract void displayDetails();
 }

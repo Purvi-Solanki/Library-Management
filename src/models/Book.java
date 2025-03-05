@@ -1,20 +1,14 @@
 package models;
 
-public class Book extends LibraryEntity {
-    private String bookID;
+public class Book {
     private String title;
     private String author;
-    private boolean isAvailable;
+    private String isbn;
 
-    public Book(String bookID, String title, String author) {
-        this.bookID = bookID;
+    public Book(String title, String author, String isbn) {
         this.title = title;
         this.author = author;
-        this.isAvailable = true;
-    }
-
-    public String getBookID() {
-        return bookID;
+        this.isbn = isbn;
     }
 
     public String getTitle() {
@@ -25,23 +19,11 @@ public class Book extends LibraryEntity {
         return author;
     }
 
-    public boolean isAvailable() {
-        return isAvailable;
+    public String getIsbn() {
+        return isbn;
     }
 
-    public void borrowBook() {
-        isAvailable = false;
-    }
-
-    public void returnBook() {
-        isAvailable = true;
-    }
-
-    @Override
-    public void getDetails() {
-        System.out.println("Book ID: " + bookID);
-        System.out.println("Title: " + title);
-        System.out.println("Author: " + author);
-        System.out.println("Available: " + (isAvailable ? "Yes" : "No"));
+    public void displayBook() {
+        System.out.println("Title: " + title + ", Author: " + author + ", ISBN: " + isbn);
     }
 }

@@ -1,55 +1,89 @@
 package ui;
 
+import models.*;
 import services.Library;
-
-import javax.swing.*;
-
-import models.Book;
-import models.Member;
-
-import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.util.Scanner;
 
 public class LibraryUI {
     private Library library;
+    private Scanner scanner;
 
-    public LibraryUI() {
-        library = new Library();
-        initializeUI();
+    // Constructor to accept a Library instance
+    public LibraryUI(Library library) {
+        this.library = library;
+        this.scanner = new Scanner(System.in);
     }
 
-    private void initializeUI() {
-        JFrame frame = new JFrame("Library Management System");
-        frame.setSize(400, 300);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setLayout(new FlowLayout());
+    public void start() {
+        System.out.println("Welcome to the Library System!");
+        System.out.println("1. Login as Member");
+        System.out.println("2. Login as Librarian");
+        int choice = scanner.nextInt();
+        scanner.nextLine();
 
-        JButton addBookBtn = new JButton("Add Book");
-        JButton listBooksBtn = new JButton("List Books");
+        if (choice == 1) {
+            memberInterface();
+        } else if (choice == 2) {
+            librarianInterface();
+        } else {
+            System.out.println("Invalid choice!");
+        }
+    }
 
-        addBookBtn.addActionListener(e -> {
-            String title = JOptionPane.showInputDialog("Enter Book Title:");
-            String author = JOptionPane.showInputDialog("Enter Author Name:");
-            Book book = new Book(String.valueOf(System.currentTimeMillis()), title, author);
-            library.addBook(book);
-            JOptionPane.showMessageDialog(null, "Book Added Successfully!");
-        });
+    private void memberInterface() {
+        System.out.println("Enter your name:");
+        String name = scanner.nextLine();
+        System.out.println("Enter your ID:");
+        String id = scanner.nextLine();
+        Member member = new Member(name, id);
 
-        listBooksBtn.addActionListener(e -> {
-            StringBuilder booksList = new StringBuilder("Books in Library:\n");
-            for (Book book : library.getBooks()) { // ✅ Use getter method
-                booksList.append(book.getTitle()).append(" by ").append(book.getAuthor()).append("\n");
+        while (true) {
+            System.out.println("\n1. View Books\n2. Rent Book\n3. Exit");
+            int choice = scanner.nextInt();
+            scanner.nextLine();
+
+            if (choice == 1) {
+                library.viewBooks();
+            } else if (choice == 2) {
+                System.out.println("Enter book title:");
+                String title = scanner.nextLine();
+                for (Book book : library.getBooks()) {
+                    if (book.getTitle().equalsIgnoreCase(title)) {
+                        library.rentBook(member, book);
+                        break;
+                    }
+                }
+            } else {
+                break;
             }
-            JOptionPane.showMessageDialog(null, booksList.toString());
-        });
-
-        frame.add(addBookBtn);
-        frame.add(listBooksBtn);
-        frame.setVisible(true);
+        }
     }
 
-    public static void main(String[] args) {
-        new LibraryUI();
+    private void librarianInterface() {
+        System.out.println("Enter Librarian name:");
+        String name = scanner.nextLine();
+        System.out.println("Enter Librarian ID:");
+        String id = scanner.nextLine();
+        Librarian librarian = new Librarian(name, id);
+
+        while (true) {
+            System.out.println("\n1. Add Book\n2. View Rented Books\n3. Exit");
+            int choice = scanner.nextInt();
+            scanner.nextLine();
+
+            if (choice == 1) {
+                System.out.println("Enter book title:");
+                String title = scanner.nextLine();
+                System.out.println("Enter author:");
+                String author = scanner.nextLine();
+                System.out.println("Enter ISBN:");
+                String isbn = scanner.nextLine();
+                librarian.addBook(library, new Book(title, author, isbn));
+            } else if (choice == 2) {
+                librarian.viewRentedBooks(library);
+            } else {
+                break;
+            }
+        }
     }
 }

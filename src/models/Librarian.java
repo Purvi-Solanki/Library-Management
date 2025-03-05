@@ -1,20 +1,23 @@
 package models;
 
-public class Librarian extends Person {
-    private String employeeID;
+import services.Library; // ✅ Add this line to import Library.java
 
-    public Librarian(String name, String contactInfo, String employeeID) {
-        super(name, contactInfo);
-        this.employeeID = employeeID;
+public class Librarian extends Person {
+    public Librarian(String name, String id) {
+        super(name, id);
     }
 
-    public String getEmployeeID() {
-        return employeeID;
+    public void addBook(Library library, Book book) { // ✅ Now Library is recognized
+        library.addBook(book);
+        System.out.println("Librarian " + name + " added: " + book.getTitle());
+    }
+
+    public void viewRentedBooks(Library library) { // ✅ Library is now resolved
+        library.viewRentedBooks();
     }
 
     @Override
     public void displayDetails() {
-        super.displayDetails();
-        System.out.println("Employee ID: " + employeeID);
+        System.out.println("Librarian ID: " + id + ", Name: " + name);
     }
 }

@@ -4,39 +4,24 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Member extends Person {
-    private String memberID;
-    private List<Book> borrowedBooks;
+    private List<Book> rentedBooks;
 
-    public Member(String name, String contactInfo, String memberID) {
-        super(name, contactInfo);
-        this.memberID = memberID;
-        this.borrowedBooks = new ArrayList<>();
+    public Member(String name, String id) {
+        super(name, id);
+        this.rentedBooks = new ArrayList<>();
     }
 
-    public String getMemberID() {
-        return memberID;
+    public void rentBook(Book book) {
+        rentedBooks.add(book);
+        System.out.println(name + " rented " + book.getTitle());
     }
 
-    public void borrowBook(Book book) {
-        if (book.isAvailable()) {
-            borrowedBooks.add(book);
-            book.borrowBook();
-            System.out.println(name + " borrowed " + book.getTitle());
-        } else {
-            System.out.println("Book is not available.");
-        }
-    }
-
-    public void returnBook(Book book) {
-        if (borrowedBooks.remove(book)) {
-            book.returnBook();
-            System.out.println(name + " returned " + book.getTitle());
-        }
+    public List<Book> getRentedBooks() {
+        return rentedBooks;
     }
 
     @Override
     public void displayDetails() {
-        super.displayDetails();
-        System.out.println("Member ID: " + memberID);
+        System.out.println("Member ID: " + id + ", Name: " + name);
     }
 }
