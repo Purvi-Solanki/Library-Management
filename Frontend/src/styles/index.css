@@ -1,0 +1,94 @@
+/* Import Montserrat font */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap');
+
+/* Theme Variables */
+:root {
+  /* Theme Colors */
+  --bg-primary: #ede8dc;  
+  --bg-secondary: #c1cfa1;  
+  --bg-button: #3e4d3b;
+  --text-primary: #503530;   
+  --text-sec: #463b33;
+  --text-secondary: #3e4d3b; 
+  --accent-primary: #3e4d3b;
+  --accent-secondary: #A5B68D; 
+  --border-color: #503530;  
+  --navbar-bg: linear-gradient(180deg, #2d1e1b, #463b33);      /* Warm brown for navbar */
+  --sidebar-bg: #A5B68D;     /* Muted sage for sidebar */
+  --success: #A5B68D;        /* Muted sage for success */
+  --danger: #503530;         /* Warm brown for alerts */
+  --warning: #503530;        /* Warm brown for warnings */
+  --hover: #503530;          
+}
+
+/* Global Reset and Base Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #FAF9F6;
+  color: var(--text-primary);
+  line-height: 1.6;
+  min-height: 100vh;
+}
+
+/* Global Container */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+/* Reset default link styles */
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Global Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in {
+  animation: fadeIn 0.3s ease-out;
+}
+
+/* Global State Classes */
+.loading {
+  color: var(--text-secondary);
+  text-align: center;
+  padding: 2rem;
+}
+
+.error-message {
+  color: var(--danger);
+  background-color: rgba(239, 68, 68, 0.1);
+  padding: 1rem;
+  border-radius: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.success-message {
+  color: var(--success);
+  background-color: rgba(34, 197, 94, 0.1);
+  padding: 1rem;
+  border-radius: 0.5rem;
+  margin-bottom: 1rem;
+} 

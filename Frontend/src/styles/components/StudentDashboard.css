@@ -1,0 +1,144 @@
+/* General Page Styles */
+.container {
+  max-width: 90%;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Section Titles */
+.section-title {
+  font-size: 30px;
+  font-weight: bold;
+  color: var(--text-primary);
+  margin-bottom:30px;
+  border-bottom: 2px solid #2d1e1b;
+  display:inline-block;
+}
+
+/* Grid Layout for Books */
+/* Book Grid Layout with Fixed Height */
+.book-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px));
+  gap: 20px;
+  max-height: 500px; /* Fixed height for grid */
+  overflow-y: auto;  /* Enable scrolling if books exceed the fixed height */
+  padding: 15px;
+  border-radius: 10px;
+}
+
+/* Custom Scrollbar for Book Grid */
+.book-grid::-webkit-scrollbar {
+  width: 5px;
+}
+
+.book-grid::-webkit-scrollbar-thumb {
+  background-color: #888;
+  border-radius: 10px;
+}
+
+.book-grid::-webkit-scrollbar-track {
+  background-color: #ffffff98;
+}
+
+/* Book Cards */
+.book-card {
+  background: var(--bg-secondary);
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(90, 45, 0, 0.2);
+  padding: 15px;
+  position: relative;
+  
+}
+
+.book-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(70, 35, 0, 0.35);
+}
+
+/* Book Content */
+.book-content {
+  text-align: center;
+}
+
+.book-title {
+  font-size: 18px;
+  font-weight: bold;
+  color: var(--text-sec);
+  margin-bottom: 5px;
+}
+
+.book-author,
+.book-genre {
+  font-size: 14px;
+  color: var(--text-secondary);
+}
+
+/* Badge Styles */
+.badge {
+  display: inline-block;
+  padding: 5px 10px;
+  font-size: 12px;
+  border-radius: 15px;
+  font-weight: bold;
+}
+
+.badge-available {
+  background-color: #3e4d3b;
+  color: white;
+}
+
+.badge-unavailable {
+  background-color: #253023;
+  color: var(--bg-primary);
+}
+
+.badge-borrowed {
+  background-color: #362c25 ;
+  color: white;
+}
+
+/* Buttons */
+
+
+.btn {
+  display: block;
+  text-align: center;
+  padding: 10px;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s ease-in-out;
+   
+}
+
+.btn-primary {
+  border-radius: 5px;
+  margin: 0 auto; 
+  width: 70%;
+  background-color: var(--text-primary);
+  color: white;
+  border: none;
+}
+
+.btn-primary:hover {
+  background-color: var(--text-secondary);
+  box-shadow: #253023;
+}
+
+
+.btn-return {
+  margin: 0 auto; 
+  border-radius: 5px;
+  width: 70%;
+  background-color: var(--text-secondary);
+  color: white;
+  border: none;
+}
+
+.btn-return:hover{
+  margin: 0 auto; 
+  width: 70%;
+  background-color: var(--text-primary);
+  color: white;
+}
