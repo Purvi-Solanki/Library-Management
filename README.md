@@ -2,7 +2,7 @@
 
 A modern, full-stack Library Management System that allows librarians to manage books and students to borrow/return books. Built with Spring Boot and React.js.
 
-## 📸Screeshots
+## 📸UI INTERFACE
 Login Interface
 ![image](https://github.com/user-attachments/assets/8ee687a2-47c0-4153-bdfe-fee15401014d)
 Student Dashboard
@@ -125,10 +125,10 @@ npm start
 
 ## 👥 Contributors
 
-- Nimish Somani
-- Purvi Solanki
+- [Nimish Somani](https://github.com/Nimish1106)
+- [Purvi Solanki](https://github.com/Purvi-Solanki)
 - Aditya Solunke
-- Tanishka Singh
+- [Tanishka Singh](https://github.com/Tanishka-Singh05)
 
 
 ## 🤝 Contributing
